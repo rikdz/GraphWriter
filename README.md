@@ -2,6 +2,10 @@
 
 This repository contains the source code of our paper, [Text Generation from Knowledge Graphs with Graph Transformers](https://google.com), which is accepted for publication at [NAACL 2019](http://naacl2019.org/).
 
+# Instructions
+
+This repository is under construction! Check back soon for more details.
+
 ## Citation
 If this work is useful in your research, please cite our paper.
 ```
