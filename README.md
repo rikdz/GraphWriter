@@ -4,6 +4,11 @@ This repository contains the source code of our paper, [Text Generation from Kno
 
 # Instructions
 
+Basic Usage:
+```
+python3.6 train.py -save <DIR>
+```
+
 This repository is under construction! Check back soon for more details.
 
 ## Citation
@@ -20,4 +25,3 @@ If this work is useful in your research, please cite our paper.
 ## References
 
  1. Hochreiter, Sepp, and Jürgen Schmidhuber. "Long short-term memory." Neural computation 9.8 (1997): 1735-1780. 
- 2. Merity, Stephen, Nitish Shirish Keskar, and Richard Socher. "Regularizing and optimizing LSTM language models." arXiv preprint arXiv:1708.02182 (2017).
