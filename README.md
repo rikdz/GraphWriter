@@ -11,6 +11,11 @@ python3.6 train.py -save <DIR>
 
 This repository is under construction! Check back soon for more details.
 
+# AGENDA Dataset
+
+The AGENDA dataset is available in a user-friendly json format in data/unprocessed.tar.gz
+
+
 ## Citation
 If this work is useful in your research, please cite our paper.
 ```

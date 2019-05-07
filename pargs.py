@@ -70,7 +70,7 @@ def pargs():
   parser.add_argument("-outunk",default=5,type=int)
   parser.add_argument("-entunk",default=5,type=int)
   parser.add_argument("-datadir",default="data/")
-  parser.add_argument("-data",default="lastGraph2_sents.train.tsv")
+  parser.add_argument("-data",default="preprocessed.train.tsv")
   parser.add_argument("-relvocab",default="relations.vocab",type=str)
   parser.add_argument("-savevocab",default=None,type=str)
   parser.add_argument("-loadvocab",default=None,type=str)
