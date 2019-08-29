@@ -4,16 +4,28 @@ This repository contains the source code of our paper, [Text Generation from Kno
 
 # Instructions
 
-Basic Usage:
+Training:
 ```
 python3.6 train.py -save <DIR>
 ```
+Use ``--help`` for a list of all training options.
 
-This repository is under construction! Check back soon for more details.
+To generate, use 
+```
+python3.6 generator.py -save <SAVED MODEL>
+``` 
+with the appropriate model flags used to train the model
+
+To evaluate, run
+```
+python3.6 eval.py <GENERATED TEXTS> <GOLD TARGETS>
+```
+
 
 # AGENDA Dataset
 
-The AGENDA dataset is available in a user-friendly json format in data/unprocessed.tar.gz
+The AGENDA dataset is available in a user-friendly json format in /data/unprocessed.tar.gz
+Preprocessed data is also available in /data.
 
 
 ## Citation
@@ -27,6 +39,3 @@ If this work is useful in your research, please cite our paper.
 }
 ```
 
-## References
-
- 1. Hochreiter, Sepp, and Jürgen Schmidhuber. "Long short-term memory." Neural computation 9.8 (1997): 1735-1780. 

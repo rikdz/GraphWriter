@@ -12,7 +12,7 @@ def gelu(x):
 class Block(nn.Module):
   def __init__(self,args):
     super().__init__()
-    self.attn = MultiHeadAttention(args.hsz,args.hsz,args.hsz,h=4,dropout_p=args.blockdrop)
+    self.attn = MultiHeadAttention(args.hsz,args.hsz,args.hsz,h=4,dropout_p=args.drop)
     self.l1 = nn.Linear(args.hsz,args.hsz*4)
     self.l2 = nn.Linear(args.hsz*4,args.hsz)
     self.ln_1 = nn.LayerNorm(args.hsz)
@@ -37,7 +37,7 @@ class graph_encode(nn.Module):
     nn.init.xavier_normal_(self.renc.weight)
 
     if args.model == "gat":
-      self.gat = nn.ModuleList([MultiHeadAttention(args.hsz,args.hsz,args.hsz,h=4,dropout_p=args.blockdrop) for _ in range(args.prop)])
+      self.gat = nn.ModuleList([MultiHeadAttention(args.hsz,args.hsz,args.hsz,h=4,dropout_p=args.drop) for _ in range(args.prop)])
     else:
       self.gat = nn.ModuleList([Block(args) for _ in range(args.prop)])
     self.prop = args.prop
