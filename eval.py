@@ -4,9 +4,9 @@ import collections
 import sys
 
 sys.path.append('./pycocoevalcap')
-from utils.pycocoevalcap.bleu.bleu import Bleu
-from utils.pycocoevalcap.rouge.rouge import Rouge
-from utils.pycocoevalcap.meteor.meteor import Meteor
+from pycocoevalcap.bleu.bleu import Bleu
+from pycocoevalcap.rouge.rouge import Rouge
+from pycocoevalcap.meteor.meteor import Meteor
 #from pycocoevalcap.cider.cider import Cider
 
 class Evaluate(object):
