@@ -95,6 +95,8 @@ def pargs():
 
   parser.add_argument("-gpu",default=0,type=int)
   args = parser.parse_args()
+  if args.gpu == -1:
+    args.gpu = 'cpu'
   args.device = torch.device(args.gpu)
 
   #args.options_file = "../elmo/elmo_2x2048_256_2048cnn_1xhighway_options.json"

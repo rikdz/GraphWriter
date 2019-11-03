@@ -8,9 +8,20 @@ class MatrixAttn(nn.Module):
     super().__init__()
     self.attnlin = nn.Linear(linin,linout)
 
+  def get_device(self):
+    # return the device of the tensor, either "cpu" 
+    # or number specifiing the index of gpu. 
+    dev = next(self.parameters()).get_device()
+    if dev == -1:
+        return "cpu"
+    return dev
+
   def forward(self,dec,emb):
     emb,elen = emb
-    emask = torch.arange(0,emb.size(1)).unsqueeze(0).repeat(emb.size(0),1).long().cuda()
+    dev = emb.get_device()
+    # emask and emb should be in the same device 
+    emask = torch.arange(0,emb.size(1)).unsqueeze(0).repeat(emb.size(0),1).long().to(self.get_device())
+    
     emask = (emask >= elen.unsqueeze(1)).unsqueeze(1)
     decsmall = self.attnlin(dec)
     unnorm = torch.bmm(decsmall,emb.transpose(1,2))
@@ -224,6 +235,14 @@ class MultiHeadAttention(nn.Module):
         self.bn = nn.BatchNorm1d(num_units)
         self.ln = nn.LayerNorm(num_units)
 
+    def get_device(self):
+        # return the device of the tensor, either "cpu" 
+        # or number specifiing the index of gpu. 
+        dev = next(self.parameters()).get_device()
+        if dev == -1:
+            return "cpu"
+        return dev
+
     def forward(self, query, keys, mask=None):
         Q = self.query_layer(query)
         K = self.key_layer(keys)
@@ -239,7 +258,9 @@ class MultiHeadAttention(nn.Module):
         # calculate QK^T
         attention = torch.matmul(Q, K.transpose(1, 2))
         # normalize with sqrt(dk)
-        attention = attention / torch.sqrt(self._key_dim).cuda()
+
+        # attention and _key_dim should be in the same device.
+        attention = attention / torch.sqrt(self._key_dim).to(self.get_device())
 
         if mask is not None:
           mask = mask.repeat(self._h,1,1)
