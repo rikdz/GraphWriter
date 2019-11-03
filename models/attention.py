@@ -18,7 +18,7 @@ class MatrixAttn(nn.Module):
 
   def forward(self,dec,emb):
     emb,elen = emb
-    dev = emb.get_device()
+    # dev = emb.get_device()
     # emask and emb should be in the same device 
     emask = torch.arange(0,emb.size(1)).unsqueeze(0).repeat(emb.size(0),1).long().to(self.get_device())
     
