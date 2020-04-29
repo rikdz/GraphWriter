@@ -43,6 +43,16 @@ class graph_encode(nn.Module):
     self.prop = args.prop
     self.sparse = args.sparse
 
+
+  def get_device(self):
+  # return the device of the tensor, either "cpu" 
+  # or number specifiing the index of gpu. 
+    dev = next(self.parameters()).get_device()
+    if dev == -1:
+      return "cpu"
+    return dev
+
+
   def pad(self,tensor,length):
     return torch.cat([tensor, tensor.new(length - tensor.size(0), *tensor.size()[1:]).fill_(0)])
 
@@ -60,7 +70,8 @@ class graph_encode(nn.Module):
         lens = [len(x) for x in adj]
         m = max(lens)
         mask = torch.arange(0,m).unsqueeze(0).repeat(len(lens),1).long()
-        mask = (mask <= torch.LongTensor(lens).unsqueeze(1)).cuda()
+        # mask and vents should be in the same device. 
+        mask = (mask <= torch.LongTensor(lens).unsqueeze(1)).to(self.get_device())
         mask = (mask == 0).unsqueeze(1)
       else:
         mask = (adj == 0).unsqueeze(1)
@@ -85,6 +96,7 @@ class graph_encode(nn.Module):
     gents = torch.stack(gents,0)
     elens = torch.LongTensor(elens)
     emask = torch.arange(0,gents.size(1)).unsqueeze(0).repeat(gents.size(0),1).long()
-    emask = (emask <= elens.unsqueeze(1)).cuda()
+    # emask and vents should be in the same device. 
+    emask = (emask <= elens.unsqueeze(1)).to(self.get_device())
     glob = torch.stack(glob,0)
     return None,glob,(gents,emask)
