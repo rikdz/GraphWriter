@@ -20,11 +20,11 @@ def tgtreverse(tgts,entlist,order):
 def test(args,ds,m,epoch='cmdline'):
   args.vbsz = 1
   model = args.save.split("/")[-1]
-  ofn = "../outputs/"+model+".beam_predictions"
+  ofn = "outputs/"+model+".beam_predictions"
   m.eval()
   k = 0
   data = ds.mktestset(args)
-  ofn = "../outputs/"+model+".inputs.beam_predictions."+epoch
+  ofn = "outputs/"+model+".inputs.beam_predictions."+epoch
   pf = open(ofn,'w')
   preds = []
   golds = []

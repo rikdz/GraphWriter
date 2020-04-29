@@ -42,7 +42,7 @@ def pargs():
   parser.add_argument("-epochs",default=20,type=int)
   parser.add_argument("-clip",default=1,type=float,help='clip grads')
   parser.add_argument("-t1size",default=32,type=int,help="batch size for short targets")
-  parser.add_argument("-t2size",default=24,type=int,help="batch size for medium length targets")
+  parser.add_argument("-t2size",default=16,type=int,help="batch size for medium length targets")
   parser.add_argument("-t3size",default=8,type=int,help="batch size for long targets")
 
   #optim
@@ -73,9 +73,11 @@ def pargs():
   parser.add_argument("-entunk",default=5,type=int,help="unk @ for entity vocabulary")
   parser.add_argument("-datadir",default="data/")
   parser.add_argument("-data",default="preprocessed.train.tsv",help="preprocessed data")
+  parser.add_argument("-traindata",default="preprocessed.train.tsv",help="preprocessed train data")
   parser.add_argument("-relvocab",default="relations.vocab",type=str,help='vocabulary of graph relations')
   parser.add_argument("-savevocab",default=None,type=str)
   parser.add_argument("-loadvocab",default=None,type=str)
+
   #eval
   parser.add_argument("-eval",action='store_true')
 

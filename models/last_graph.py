@@ -72,7 +72,8 @@ class graph_encode(nn.Module):
           #print(ngraph.size(),vgraph.size(),mask.size())
           vgraph = self.gat[j](vgraph.unsqueeze(1),ngraph,mask)
         else:
-          ngraph = torch.tensor(vgraph.repeat(N,1).view(N,N,-1),requires_grad=False)
+          #ngraph = torch.tensor(vgraph.repeat(N,1).view(N,N,-1),requires_grad=False)
+          ngraph =vgraph.repeat(N,1).view(N,N,-1).clone().detach().requires_grad_(False)
           vgraph = self.gat[j](vgraph.unsqueeze(1),ngraph,mask)
           if self.args.model == 'gat':
             vgraph = vgraph.squeeze(1)
