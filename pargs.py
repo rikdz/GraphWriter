@@ -23,7 +23,7 @@ def pargs():
   parser.add_argument("-esz",default=500,type=int,help='embedding size')
   parser.add_argument("-hsz",default=500,type=int,help="hidden state size")
   parser.add_argument("-prop",default=6,type=int,help="number of layers/blocks")
-  parser.add_argument("-title",action='store_true',help="do not use title as input, only graph/entities")
+  parser.add_argument("-title",action='store_true',help="use title as additional input")
   parser.add_argument("-drop",default=0.1,type=float,help="dropout rate")
   parser.add_argument("-embdrop",default=0,type=float,help="embedding dropout")
   parser.add_argument("-layers",default=2,type=int,help='encoder lstm layers')
