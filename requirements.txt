@@ -1,0 +1,7 @@
+typing-extensions==4.5.0 
+allennlp
+chardet
+dill
+torchtext
+pytorch
+torchvision
