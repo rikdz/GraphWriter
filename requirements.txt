@@ -1,0 +1,9 @@
+typing-extensions==4.5.0 
+allennlp
+chardet
+dill
+torchtext
+
+# M1 macOS use: conda install pytorch torchvision -c pytorch
+pytorch
+torchvision

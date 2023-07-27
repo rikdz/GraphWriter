@@ -155,7 +155,7 @@ class model(nn.Module):
       a2 = self.attn2(hx.unsqueeze(1),tencs,mask=tmask).squeeze(1)
       a = torch.cat((a,a2),1)
     outputs = []
-    outp = torch.LongTensor(ents.size(0),1).fill_(self.starttok).cuda()
+    outp = torch.LongTensor(ents.size(0),1).fill_(self.starttok)
     beam = None
     for i in range(self.maxlen):
       op = self.emb_w_vertex(outp.clone(),b.nerd)

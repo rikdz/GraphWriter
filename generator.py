@@ -63,6 +63,7 @@ def metrics(preds,gold):
 
 if __name__=="__main__":
   args = pargs()
+  args.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
   args.eval = True
   ds = dataset(args)
   args = dynArgs(args,ds)
